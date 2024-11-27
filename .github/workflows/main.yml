@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       rom_url:
-        description: 'URL to the stock ROM .tar.gz file'
+        description: 'INPUT URL LINK DOWNLOAD'
         required: true
         type: string
 
