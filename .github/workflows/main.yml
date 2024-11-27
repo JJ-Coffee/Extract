@@ -18,7 +18,7 @@ jobs:
 
     - name: Download Stock ROM
       # Replace with your actual ROM URL or path in the repo
-      run: wget -O stock_rom.zip "https://example.com/your-stock-rom.zip"
+      run: wget -O stock_rom.zip "https://cdnorg.d.miui.com/OS1.0.9.0.UNLIDXM/miui_DUCHAMPIDGlobal_OS1.0.9.0.UNLIDXM_80bea8031a_14.0.zip"
 
     - name: Extract Boot Image
       run: |
