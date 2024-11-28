@@ -43,23 +43,14 @@ jobs:
     - name: Extract Payload.bin
       run: |
         # Use payload-dumper-go to extract payload.bin
-        mkdir output
-        payload-dumper-go extracted_rom/payload.bin /output
-
-    - name: List Extracted Files output 
-      run: ls -l /output
-
-    - name: List Extracted Files extracted_rom
-      run: ls -l /extracted_rom
-
-    - name: List Extracted Files di
-      run: ls
+        cd /extracted_rom
+        payload-dumper-go payload.bin
 
     - name: Extract boot.img and vbmeta.img
       run: |
         # Search for boot.img and vbmeta.img in the extracted ROM directory
-        find output -name "boot.img" -exec cp {} ./ \;
-        find output -name "vbmeta.img" -exec cp {} ./ \;
+        find extracted_rom -name "boot.img" -exec cp {} ./ \;
+        find extracted_rom -name "vbmeta.img" -exec cp {} ./ \;
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
