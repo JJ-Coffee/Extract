@@ -26,16 +26,24 @@ jobs:
       with:
         go-version: 'stable'
 
-    - name: Install Dependencies
+    - name: Clone Repository
       run: |
+        git clone https://github.com/ssut/payload-dumper-go.git dump
+        cd dump
         go mod tidy
 
     - name: Build payload-dumper-go
       run: |
-        git clone https://github.com/ssut/payload-dumper-go.git dump
-        go build -o payload-dumper-go dump/main.go
-        chmod +x payload-dumper-go
-        sudo mv payload-dumper-go /usr/local/bin/
+        cd dump
+        go build -o payload-dumper-go main.go
+
+    - name: Install payload-dumper-go
+      run: |
+        sudo mv dump/payload-dumper-go /usr/local/bin/
+        chmod +x /usr/local/bin/payload-dumper-go
+
+    - name: Clean up
+      run: |
         rm -rf dump
 
     #- name: Download payload-dumper-go
