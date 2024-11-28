@@ -42,7 +42,7 @@ jobs:
     - name: Extract Payload.bin
       run: |
         # Use payload-dumper-go to extract payload.bin
-        ./payload-dumper-go extracted_rom/payload.bin extracted_rom/
+        payload-dumper-go extracted_rom/payload.bin extracted_rom/
 
     - name: Extract boot.img and vbmeta.img
       run: |
