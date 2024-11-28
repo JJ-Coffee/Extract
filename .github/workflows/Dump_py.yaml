@@ -1,4 +1,4 @@
-name: Extract Payload.bin, Boot.img, and Vbmeta.img
+name: Extract Payload.bin with Python
 
 on:
   push:
@@ -49,14 +49,14 @@ jobs:
       run: |
         # Use payload-dumper-go to extract payload.bin
         mkdir output
-        python payload_dumper.py extracted_rom/payload.bin /output
+        python payload_dumper.py --out output extracted_rom/payload.bin
         ls -lah output
 
     - name: Extract boot.img and vbmeta.img
       run: |
         # Search for boot.img and vbmeta.img in the extracted ROM directory
         find output -name "boot.img" -exec cp {} ./ \;
-        #find extracted_rom -name "vbmeta.img" -exec cp {} ./ \;
+        find output -name "vbmeta.img" -exec cp {} ./ \;
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
@@ -64,4 +64,5 @@ jobs:
         name: extracted-files
         path: |
           boot.img
+          vbmeta.img
           
