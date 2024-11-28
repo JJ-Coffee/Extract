@@ -42,11 +42,17 @@ jobs:
     - name: Extract Payload.bin
       run: |
         # Use payload-dumper-go to extract payload.bin
-        ./payload-dumper-go extracted_rom/payload.bin
+        mkdir output
+        payload-dumper-go extracted_rom/payload.bin /output
 
-    - name: List Extracted Files
-      run: ls -l
-      
+    - name: List Extracted Files output 
+      run: ls -l /output
+
+    - name: List Extracted Files extracted_rom
+      run: ls -l /extracted_rom
+
+    - name: List Extracted Files di
+      run: ls
 
     - name: Extract boot.img and vbmeta.img
       run: |
