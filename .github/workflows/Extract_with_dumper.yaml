@@ -23,8 +23,8 @@ jobs:
 
     - name: Download payload-dumper-go
       run: |
-        wget https://github.com/ssut/payload-dumper-go/releases/download/1.3.0/payload-dumper-go_1.3.0_linux_arm64.tar.gz
-        tar -xvf payload-dumper-go_1.3.0_linux_arm64.tar.gz
+        wget https://github.com/ssut/payload-dumper-go/releases/download/1.3.0/payload-dumper-go_1.3.0_linux_amd64.tar.gz
+        tar -xvf payload-dumper-go_1.3.0_linux_amd64.tar.gz
         chmod +x payload-dumper-go
         # Add payload-dumper-go to PATH
         export PATH=$PATH:$PWD
@@ -42,7 +42,7 @@ jobs:
     - name: Extract Payload.bin
       run: |
         # Use payload-dumper-go to extract payload.bin
-        payload-dumper-go extracted_rom/payload.bin extracted_rom/
+        ./payload-dumper-go extracted_rom/payload.bin extracted_rom/
 
     - name: Extract boot.img and vbmeta.img
       run: |
