@@ -47,11 +47,12 @@ jobs:
         # Use payload-dumper-go to extract payload.bin
         mkdir output
         payload-dumper-go extracted_rom/payload.bin /output
+        ls -lah output
 
     - name: Extract boot.img and vbmeta.img
       run: |
         # Search for boot.img and vbmeta.img in the extracted ROM directory
-        find extracted_rom -name "payload.bin" -exec cp {} ./ \;
+        find output -name "boot.img" -exec cp {} ./ \;
         #find extracted_rom -name "vbmeta.img" -exec cp {} ./ \;
 
     - name: Upload Artifacts
@@ -59,5 +60,5 @@ jobs:
       with:
         name: extracted-files
         path: |
-          payload.bin
+          boot.img
           
