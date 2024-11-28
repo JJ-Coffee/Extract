@@ -27,7 +27,8 @@ jobs:
         tar -xvf payload-dumper-go_1.3.0_linux_amd64.tar.gz
         chmod +x payload-dumper-go
         # Add payload-dumper-go to PATH
-        export PATH=$PATH:$PWD
+        #export PATH=$PATH:$PWD
+        sudo mv payload-dumper-go /usr/local/bin/
 
     - name: Download Stock ROM
       run: |
