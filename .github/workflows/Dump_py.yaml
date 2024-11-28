@@ -49,7 +49,7 @@ jobs:
       run: |
         # Use payload-dumper-go to extract payload.bin
         mkdir output
-        payload-dumper-go extracted_rom/payload.bin /output
+        python payload_dumper.py extracted_rom/payload.bin /output
         ls -lah output
 
     - name: Extract boot.img and vbmeta.img
