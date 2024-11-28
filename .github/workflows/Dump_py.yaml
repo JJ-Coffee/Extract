@@ -3,6 +3,8 @@ name: Extract Payload.bin, Boot.img, and Vbmeta.img
 on:
   workflow_dispatch:
     inputs:
+      branches:
+        -main
       rom_url:
         description: 'URL to the stock ROM .zip file'
         required: true
