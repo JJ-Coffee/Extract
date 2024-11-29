@@ -57,7 +57,7 @@ jobs:
       run: |
         # Search for boot.img and vbmeta.img in the extracted ROM directory
         find output -name "boot.img" -exec cp {} ./ \;
-        #find output -name "vbmeta.img" -exec cp {} ./ \;
+        find output -name "vbmeta.img" -exec cp {} ./ \;
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
@@ -65,4 +65,5 @@ jobs:
         name: extracted-files
         path: |
           boot.img
+          vbmeta.img
           
