@@ -1,4 +1,4 @@
-name: Extract Payload.bin, Boot.img, and Vbmeta.img
+name: Extract Payload.bin WITH GO
 
 on:
   workflow_dispatch:
