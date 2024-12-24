@@ -66,4 +66,4 @@ jobs:
         path: |
           boot.img
           vbmeta.img
-          
+          init_boot.img
