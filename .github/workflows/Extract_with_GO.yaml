@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Environment
       run: |
@@ -61,7 +61,7 @@ jobs:
         find output -name "init_boot.img" -exec cp {} ./ \;
 
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: extracted-files
         path: |
