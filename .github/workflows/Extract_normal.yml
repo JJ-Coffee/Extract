@@ -28,10 +28,13 @@ jobs:
         mkdir extracted_rom
         unzip stock_rom.zip -d extracted_rom
         find extracted_rom -name "boot.img" -exec cp {} . \;
+        find extracted_rom -name "vbmeta.img" -exec cp {} . \;
 
     - name: Upload Boot Image Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: boot.img
-        path: boot.img
+        name: boot_vbmeta_images
+        path: |
+          boot.img
+          vbmeta.img
         
