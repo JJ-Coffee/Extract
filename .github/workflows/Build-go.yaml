@@ -10,12 +10,8 @@ jobs:
 
     strategy:
       matrix:
-        goos: [linux, windows, darwin, android]
-        goarch: [amd64, arm64]
-        exclude:
-          - goos: darwin
-            goarch: arm64  # Exclude macOS ARM64 (optional)
-
+        goos: [linux]
+        goarch: [amd64]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,7 +19,7 @@ jobs:
       - name: Set up Environment
         run: |
           sudo apt-get update
-          sudo apt-get install -y liblzma-dev libzstd-dev
+          sudo apt-get install -y liblzma-dev
 
       - name: Clone payload-dumper-go
         run: |
