@@ -1,9 +1,6 @@
 name: Extract Payload.bin with Python
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       rom_url:
