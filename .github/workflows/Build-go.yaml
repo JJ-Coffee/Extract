@@ -1,0 +1,43 @@
+name: Build Payload Dumper Go
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Cross-Compile
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        goos: [linux, windows, darwin, android]
+        goarch: [amd64, arm64]
+        exclude:
+          - goos: darwin
+            goarch: arm64  # Exclude macOS ARM64 (optional)
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clone payload-dumper-go
+        run: |
+          git clone https://github.com/ssut/payload-dumper-go.git
+          cd payload-dumper-go
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'  # Use the latest Go version
+
+      - name: Build binary
+        run: |
+          cd payload-dumper-go
+          mkdir -p build
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o build/payload-dumper-${{ matrix.goos }}-${{ matrix.goarch }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: payload-dumper-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: payload-dumper-go/build/payload-dumper-*
